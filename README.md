@@ -1,18 +1,25 @@
 http://appdev.openshift.io/docs/mission-crud-vertx.html
 
-
-Deploy:
-
-mvn clean fabric8:deploy -Popenshift
-
-Create DB:
+## Create DB:
 
 oc apply -f src/test/resources/templates/database.yml
 
-Delete all:
+## Deploy App:
 
-oc delete all -l app=booster-crud-vertx
+mvn clean oc:deploy -Popenshift
 
-Delete DB:
+## Test
+
+open URL at
+
+oc get route booster-crud-vertx -o jsonpath='{.spec.host}'
+
+## Delete all:
+
+mvn oc:undeploy -Popenshift
+
+(oc delete all -l app=booster-crud-vertx)
+
+## Delete DB:
 
 oc delete -f src/test/resources/templates/database.yml

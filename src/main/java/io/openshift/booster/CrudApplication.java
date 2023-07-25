@@ -47,7 +47,7 @@ public class CrudApplication extends AbstractVerticle {
       .put("url", "jdbc:postgresql://" + getEnv("MY_DATABASE_SERVICE_HOST", "localhost") + ":5432/my_data")
       .put("driver_class", "org.postgresql.Driver")
       .put("user", getEnv("DB_USERNAME", "user"))
-      .put("password", getEnv("DB_PASSWORD", "password "))
+      .put("password", getEnv("DB_PASSWORD", "password"))
     );
 
     DBInitHelper.initDatabase(vertx, jdbc)

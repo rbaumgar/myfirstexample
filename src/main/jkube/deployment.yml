@@ -14,4 +14,3 @@ spec:
                  secretKeyRef:
                    name: my-database-secret
                    key: password
-            - name: JAVA_OPTIONS
