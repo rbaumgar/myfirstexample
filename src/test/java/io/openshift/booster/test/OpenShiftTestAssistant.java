@@ -140,12 +140,12 @@ public class OpenShiftTestAssistant {
 
     public void awaitApplicationReadinessOrFail() {
         await().atMost(5, TimeUnit.MINUTES).until(() -> {
-                                                      List<Pod> list = client.pods().inNamespace(project).list().getItems();
-                                                      return list.stream()
-                                                              .filter(pod -> pod.getMetadata().getName().startsWith(applicationName))
-                                                              .filter(this::isRunning)
-                                                              .collect(Collectors.toList()).size() >= 1;
-                                                  }
+                List<Pod> list = client.pods().inNamespace(project).list().getItems();
+                return list.stream()
+                    .filter(pod -> pod.getMetadata().getName().startsWith(applicationName))
+                    .filter(this::isRunning)
+                    .collect(Collectors.toList()).size() >= 1;
+        }
         );
 
     }
@@ -169,11 +169,11 @@ public class OpenShiftTestAssistant {
 
     public void awaitPodReadinessOrFail(Predicate<Pod> filter) {
         await().atMost(5, TimeUnit.MINUTES).until(() -> {
-                                                      List<Pod> list = client.pods().inNamespace(project).list().getItems();
-                                                      return list.stream()
-                                                              .filter(filter)
-                                                              .filter(this::isRunning)
-                                                              .collect(Collectors.toList()).size() >= 1;
+                List<Pod> list = client.pods().inNamespace(project).list().getItems();
+                return list.stream()
+                    .filter(filter)
+                    .filter(this::isRunning)
+                    .collect(Collectors.toList()).size() >= 1;
                                                   }
         );
     }
