@@ -60,6 +60,7 @@ public class OpenShiftTestAssistant {
     private Map<String, List<HasMetadata>> created
             = new LinkedHashMap<>();
 
+    @SuppressWarnings("resource")
     public OpenShiftTestAssistant() {
         client = new DefaultKubernetesClient().adapt(OpenShiftClient.class);
         project = client.getNamespace();

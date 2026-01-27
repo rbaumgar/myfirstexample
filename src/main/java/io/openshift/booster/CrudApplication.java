@@ -24,6 +24,8 @@ public class CrudApplication extends AbstractVerticle {
 
   @Override
   public void start() {
+
+    System.out.println("Startup...");
     // Create a router object.
     Router router = Router.router(vertx);
     // implement a basic REST CRUD mapping
@@ -109,7 +111,7 @@ public class CrudApplication extends AbstractVerticle {
   private void addOne(RoutingContext ctx) {
     JsonObject item;
     try {
-      item = ctx.getBodyAsJson();
+      item = ctx.body().asJsonObject();
     } catch (RuntimeException e) {
       error(ctx, 415, "invalid payload");
       return;
@@ -141,7 +143,7 @@ public class CrudApplication extends AbstractVerticle {
 
     JsonObject item;
     try {
-      item = ctx.getBodyAsJson();
+      item = ctx.body().asJsonObject();
     } catch (RuntimeException e) {
       error(ctx, 415, "invalid payload");
       return;

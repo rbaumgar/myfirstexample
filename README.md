@@ -1,5 +1,9 @@
 http://appdev.openshift.io/docs/mission-crud-vertx.html
 
+## Local Test
+
+DB_USERNAME=luke DB_PASSWORD=secret mvn vertx:run
+
 ## Create DB:
 
 oc apply -f src/test/resources/templates/database.yml
