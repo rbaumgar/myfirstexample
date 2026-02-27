@@ -30,12 +30,13 @@
   <description>Vertx - CRUD</description>
 
   <properties>
-    <vertx.version>4.5.22.redhat-00001</vertx.version>
+    <vertx.version>4.5.23.redhat-00001</vertx.version>
     <vertx-maven-plugin.version>1.0.24</vertx-maven-plugin.version>
     <vertx.verticle>io.openshift.booster.CrudApplication</vertx.verticle>
     <java.version>11</java.version>
-    <slf4j.version>1.7.29</slf4j.version> 
-    <jkube.generator.from>registry.access.redhat.com/ubi8/openjdk-11</jkube.generator.from>
+    <slf4j.version>1.7.29</slf4j.version>
+    <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
+    <!--<jkube.generator.from>registry.access.redhat.com/ubi8/openjdk-11</jkube.generator.from> -->
   </properties>
 
   <dependencyManagement>
@@ -75,7 +76,7 @@
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <!-- <version>9.4.1212</version> -->
-      <version>42.5.6.redhat-00001</version>
+      <version>42.7.3</version>
     </dependency>
 
     <!-- Logging -->
@@ -160,9 +161,6 @@
             </executions>
             <configuration>
               <enricher>
-                <!--<includes>
-                  <include>vertx-health-check</include>
-                </includes>-->
                 <config>
                   <vertx-health-check>
                     <path>/health</path>
